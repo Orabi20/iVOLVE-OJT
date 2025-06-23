@@ -1,4 +1,4 @@
-# 🐚 Shell Script: MySQL Daily Backup Automation
+#  Shell Script: MySQL Daily Backup Automation
 
 ## 📌 Task Goal
 
@@ -32,7 +32,7 @@ sudo apt install mysql-server -y
 
 **CentOS/RHEL:**
 ```bash
-sudo yum install mysql-server -y
+sudo dnf install mysql-server -y
 sudo systemctl start mysqld
 ```
 
@@ -115,8 +115,3 @@ MySQL_backup_2025-06-23.sql
 
 ---
 
-## 🧠 Future Improvements
-
-- Add logging and error handling
-- Email notification on backup failure/success
-- Backup specific databases or tables
