@@ -1,5 +1,5 @@
 
-# 🧪 RHCSA Lab: Disk Partitioning and Logical Volume Management (XFS)
+# RHCSA Lab: Disk Partitioning and Logical Volume Management (XFS)
 
 ## 🎯 Objective
 
@@ -143,16 +143,6 @@ df -h /mnt/rhcsa
 ## 📌 Notes
 
 - XFS does not support shrinking. Only **grow** operations are allowed.
-- You must use `xfs_growfs`, not `resize2fs`, with XFS.
 
 ---
 
-## 📷 Screenshots (Optional)
-Include terminal screenshots or output logs if needed.
-
----
-
-## 📚 Reference
-
-- [Red Hat RHCSA Official Docs](https://access.redhat.com/)
-- `man fdisk`, `man lvcreate`, `man xfs_growfs`
