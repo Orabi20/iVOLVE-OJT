@@ -6,7 +6,7 @@
 The goal of this lab is to configure passwordless SSH login from your local machine to a remote machine using SSH key authentication. After completing this lab, you’ll be able to connect to the remote machine simply by running:
 
 ```bash
-ssh evolve
+ssh ivolve
 ```
 
 ---
@@ -40,10 +40,10 @@ This will generate:
 
 ### 2. Copy the Public Key to the Remote Machine
 
-Assuming the remote machine’s username is `user` and its hostname or IP is `evolve` or `192.168.1.10`:
+Assuming the remote machine’s username is `user` and its hostname or IP is `ivolve` or `192.168.1.10`:
 
 ```bash
-ssh-copy-id user@evolve
+ssh-copy-id user@ivolve
 ```
 
 Or:
@@ -67,7 +67,7 @@ nano ~/.ssh/config
 Add the following:
 
 ```ssh
-Host evolve
+Host ivolve
     HostName 192.168.1.10   # Replace with the actual IP or hostname
     User user               # Replace with your username
     IdentityFile ~/.ssh/id_rsa
@@ -82,21 +82,10 @@ Save and exit (`CTRL+O`, `Enter`, `CTRL+X` in nano).
 Now you can connect easily:
 
 ```bash
-ssh evolve
+ssh ivolve
 ```
 
 No need to enter a password if everything is set up correctly.
-
----
-
-## 📁 Repository Structure
-
-```text
-.
-├── README.md
-└── ssh_config_lab/
-    └── (optional: scripts or logs if you automate or document steps)
-```
 
 ---
 
@@ -106,9 +95,3 @@ No need to enter a password if everything is set up correctly.
 - You can use different SSH keys per host by specifying unique `IdentityFile` entries in the SSH config.
 
 ---
-
-## 📚 References
-
-- [man ssh-keygen](https://man7.org/linux/man-pages/man1/ssh-keygen.1.html)
-- [man ssh-copy-id](https://man7.org/linux/man-pages/man1/ssh-copy-id.1.html)
-- [OpenSSH Configuration](https://linux.die.net/man/5/ssh_config)
