@@ -1,4 +1,4 @@
-#  Shell Script: MySQL Daily Backup Automation
+#  Lab1 Shell Script: MySQL Daily Backup Automation
 
 ## 📌 Task Goal
 
