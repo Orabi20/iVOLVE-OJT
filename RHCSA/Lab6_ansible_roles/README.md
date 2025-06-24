@@ -45,21 +45,21 @@ ansible-galaxy init roles/jenkins
 
 ### 2. Update Role Tasks
 
-Copy the task content from `roles/*/tasks/main.yml` as provided.
+Copy the task content from `roles/*/tasks/main_role.yml` as provided.
 
 ### 3. Define Inventory
 
 Create an `inventory` file with your target host(s):
 
 ```ini
-[all]
-192.168.56.101 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa
+[web_servers]
+servera
 ```
 
 ### 4. Run the Playbook
 
 ```bash
-ansible-playbook -i inventory site.yml
+ansible-playbook -i inventory.ini main_role.yml
 ```
 
 ## ✅ Verification
