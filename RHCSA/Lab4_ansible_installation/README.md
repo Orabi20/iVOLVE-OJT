@@ -1,5 +1,5 @@
 
-# 🔧 Lab 4: Ansible Installation and Configuration
+#  Lab 4: Ansible Installation and Configuration
 
 ## 🎯 Goal
 The objective of this lab is to set up Ansible on a control node, configure a managed node for remote automation, and verify Ansible's functionality by executing ad-hoc commands.
@@ -29,20 +29,19 @@ ansible --version
 
 ### ✅ 2. Create a Custom Inventory File
 
-Create a file named `myinventory`:
+Create a file named `inventory`:
 
 ```bash
-nano myinventory
+nano inventory
 ```
 
 Add the following content:
 
 ```ini
 [webservers]
-192.168.1.10 ansible_user=ahmed
+servera
 ```
 
-> Replace `192.168.1.10` with the managed node’s IP and `ahmed` with your actual SSH username.
 
 ---
 
@@ -62,7 +61,7 @@ ssh-keygen
 ### ✅ 4. Copy the Public Key to the Managed Node
 
 ```bash
-ssh-copy-id ahmed@192.168.1.10
+ssh-copy-id student@servera
 ```
 
 > This sets up passwordless SSH access.
@@ -72,7 +71,7 @@ ssh-copy-id ahmed@192.168.1.10
 ### ✅ 5. Verify SSH Connection (Optional Check)
 
 ```bash
-ssh ahmed@192.168.1.10
+ssh student@servera
 ```
 
 If it logs in without a password, SSH setup is successful.
@@ -82,7 +81,7 @@ If it logs in without a password, SSH setup is successful.
 ### ✅ 6. Run Ad-Hoc Command to Check Disk Space
 
 ```bash
-ansible webservers -i myinventory -m command -a "df -h"
+ansible webservers -i inventory -m command -a "df -h"
 ```
 
 You should see the disk usage output of the managed node.
@@ -95,17 +94,7 @@ The managed node should respond with `df -h` output, confirming Ansible is worki
 
 ---
 
-## 📁 Optional: Sample ansible.cfg
 
-To simplify future commands, you can create an `ansible.cfg` in your working directory:
-
-```ini
-[defaults]
-inventory = ./myinventory
-host_key_checking = False
-```
-
----
 
 ## ✅ Conclusion
 
@@ -115,4 +104,3 @@ This lab demonstrates how to:
 - Use a custom inventory
 - Run ad-hoc commands to automate basic tasks
 
-You're now ready to start writing playbooks and automating more complex tasks using Ansible!
