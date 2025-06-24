@@ -22,10 +22,9 @@ Automate the installation and configuration of a MySQL server using Ansible. Sec
 ```bash
 lab7_ansible_vault/
 ├── inventory
-├── mysql_setup.yml
-├── group_vars/
-│   └── all.yml           # Encrypted with Ansible Vault
-├── vault_password_file.txt
+├── main.yml
+├── vars/
+│   └── all_vars.yml         
 └── README.md
 ```
 
@@ -36,10 +35,10 @@ lab7_ansible_vault/
 Create an encrypted variable file:
 
 ```bash
-ansible-vault create group_vars/all.yml --vault-password-file vault_password_file.txt
+ansible-vault create vars/all_vars.yml
 ```
 
-Sample content of `group_vars/all.yml`:
+Sample content of `vars/all_vars.yml`:
 
 ```yaml
 db_user: ivolve_user
@@ -56,7 +55,7 @@ db_password: StrongPassword123!
   hosts: db_servers
   become: yes
   vars_files:
-    - group_vars/all.yml
+    - vars/all_vars.yml
 
   tasks:
     - name: Install MySQL server
@@ -116,7 +115,7 @@ db_password: StrongPassword123!
 ## 🚀 Run the Playbook
 
 ```bash
-ansible-playbook -i inventory mysql_setup.yml --vault-password-file vault_password_file.txt
+ansible-playbook -i inventory main.yml --vault-password-id @prompt
 ```
 
 ---
