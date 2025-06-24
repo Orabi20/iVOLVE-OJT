@@ -59,7 +59,7 @@ servera
 
 ### 3. 📜 Create the Playbook
 
-**File: `webserver.yml`**
+**File: `web_servers.yml`**
 
 ```yaml
 ---
@@ -84,21 +84,63 @@ servera
         dest: /usr/share/nginx/html/index.html
         content: |
           <!DOCTYPE html>
-          <html>
-          <head><title>Lab5</title></head>
-          <body><h1>Lab5 by Ahmed Orabi</h1></body>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Lab5 by Ahmed Orabi</title>
+              <style>
+                  @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700&display=swap');
+                  body {
+                      margin: 0;
+                      font-family: 'Red Hat Display', sans-serif;
+                      background: linear-gradient(135deg, #e6e6e6, #ffffff);
+                      color: #1a1a1a;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 100vh;
+                  }
+                  .container {
+                      text-align: center;
+                      padding: 40px;
+                      border: 4px solid #cc0000;
+                      border-radius: 20px;
+                      background: #fff5f5;
+                      box-shadow: 0 0 20px rgba(204, 0, 0, 0.3);
+                  }
+                  h1 {
+                      font-size: 4rem;
+                      color: #cc0000;
+                      margin-bottom: 10px;
+                  }
+                  p {
+                      font-size: 1.8rem;
+                      color: #333;
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <h1>Lab5</h1>
+                  <p>by Ahmed Orabi</p>
+              </div>
+          </body>
           </html>
         owner: root
         group: root
         mode: '0644'
+        
+    - name: Open HTTP port using firewalld-cmd
+      command: firewall-cmd --permanent --add-service=http
+      notify: reload firewall
+      
+  handlers:
+    - name: reload firewall
+      ansible.builtin.service:
+        name: firewalld
+        state: reloaded
 
-    - name: Open HTTP port in firewall
-      ansible.builtin.firewalld:
-        port: 80/tcp
-        permanent: yes
-        state: enabled
-        immediate: yes
-      when: ansible_facts['os_family'] == "RedHat"
 ```
 
 ---
