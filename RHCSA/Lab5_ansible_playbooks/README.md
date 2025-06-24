@@ -1,5 +1,5 @@
 
-# 🧪 Lab 5: Ansible Playbook for Web Server Configuration
+#  Lab 5: Ansible Playbook for Web Server Configuration
 
 ## 🎯 Goal
 
@@ -42,7 +42,7 @@ ssh-keygen
 
 Copy key to managed node:
 ```bash
-ssh-copy-id youruser@192.168.56.10
+ssh-copy-id student@servera
 ```
 
 ---
@@ -52,7 +52,7 @@ ssh-copy-id youruser@192.168.56.10
 **File: `inventory.ini`**
 ```ini
 [web_servers]
-192.168.56.10 ansible_user=youruser
+servera
 ```
 
 ---
@@ -120,9 +120,7 @@ curl http://192.168.56.10
 
 You should see your custom HTML page.
 
+![image](https://github.com/user-attachments/assets/01e29a48-f806-4994-9818-c6733f51f9d7)
+
 ---
 
-## 🙌 Author
-
-Ahmed Orabi  
-Lab Task – DevOps Accelerator Program
