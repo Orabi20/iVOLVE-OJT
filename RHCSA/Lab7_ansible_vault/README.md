@@ -1,39 +1,48 @@
-markdown
 # Lab 7: Ansible Vault – MySQL Automation
 
 ## 🎯 Objective
+
 Automate the installation and configuration of a MySQL server using Ansible. Secure sensitive variables such as the database user's password using **Ansible Vault**.
 
+---
+
 ## ✅ Tasks Performed
-1. Install MySQL server on the managed node
-2. Start and enable the MySQL service
-3. Create a new database named `iVolve`
-4. Create a new MySQL user with full privileges on the `iVolve` database
-5. Use **Ansible Vault** to encrypt the database user's password
-6. Validate the setup by listing databases as the created user
+
+1. Install MySQL server on the managed node.
+2. Start and enable the MySQL service.
+3. Create a new database named `iVolve`.
+4. Create a new MySQL user with full privileges on the `iVolve` database.
+5. Use **Ansible Vault** to encrypt the database user's password.
+6. Validate the setup by listing databases as the created user.
+
+---
 
 ## 🗂️ Folder Structure
+
+```bash
 lab7_ansible_vault/
 ├── inventory
 ├── mysql_setup.yml
 ├── group_vars/
-│ └── all.yml # Encrypted with ansible-vault
+│   └── all.yml           # Encrypted with ansible-vault
 ├── vault_password_file.txt
 └── README.md
-
-text
-
-## 🔐 Ansible Vault
+🔐 Ansible Vault
 Create encrypted variable file:
-```bash
+bash
+Copy
+Edit
 ansible-vault create group_vars/all.yml --vault-password-file vault_password_file.txt
 Sample content of all.yml:
-
 yaml
+Copy
+Edit
 db_user: ivolve_user
 db_password: StrongPassword123!
 📝 Ansible Playbook: mysql_setup.yml
 yaml
+Copy
+Edit
 ---
 - name: Install and configure MySQL without using community collection
   hosts: db_servers
@@ -94,15 +103,17 @@ yaml
         var: validation_output.stdout_lines
 🚀 Run the Playbook
 bash
+Copy
+Edit
 ansible-playbook -i inventory mysql_setup.yml --vault-password-file vault_password_file.txt
 📋 Notes
-No external collections used (e.g. community.mysql)
+No external collections used (e.g. community.mysql).
 
-Uses shell module for MySQL commands
+Uses shell module for MySQL commands.
 
-Variables (like DB password) are secured using Ansible Vault
+Variables (like DB password) are secured using Ansible Vault.
 
-Compatible with RHEL/CentOS systems using mysqld service
+Compatible with RHEL/CentOS systems using mysqld service.
 
 🧠 Learning Points
 Secure secrets using Ansible Vault
@@ -112,3 +123,4 @@ Interact with MySQL using shell commands in Ansible
 Automate database and user setup
 
 Validate configuration using simple CLI MySQL checks
+
