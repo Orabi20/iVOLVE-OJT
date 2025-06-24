@@ -1,5 +1,5 @@
 
-# RHCSA Lab: Disk Partitioning and Logical Volume Management (XFS)
+# Lab2: Disk Partitioning and Logical Volume Management (XFS)
 
 ## 🎯 Objective
 
