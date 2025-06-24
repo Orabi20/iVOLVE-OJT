@@ -12,8 +12,8 @@ Automate the installation of the following applications using Ansible roles:
 
 ```
 lab6/
-├── inventory
-├── site.yml
+├── inventory.ini
+├── main_role.yml
 └── roles/
     ├── docker/
     │   └── tasks/
@@ -75,10 +75,3 @@ ansible all -i inventory -m shell -a "systemctl status jenkins"
 ## 📌 Notes
 
 - Ensure your managed nodes can access external URLs (for Docker, Jenkins, and kubectl downloads).
-- For offline setups, you may need to modify the roles to use local package sources.
-
-## 🛠 Created With
-
-- Ansible Galaxy Roles
-- Ubuntu 20.04+ Servers
-- Ansible v2.10+
