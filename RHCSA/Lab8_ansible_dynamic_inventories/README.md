@@ -122,7 +122,6 @@ ansible-playbook nginx_lab8.yml   -i inventory/aws_ec2.yml   --private-key your_
 ```
 
 ---
-<img width="517" alt="Lab8_2" src="https://github.com/user-attachments/assets/82c2b321-57c7-44a6-b6bd-e50c03940d7d" />
 
 <img width="959" alt="Lab8_3" src="https://github.com/user-attachments/assets/08ab716e-a887-446a-b2e1-88baf0407a6a" />
 
