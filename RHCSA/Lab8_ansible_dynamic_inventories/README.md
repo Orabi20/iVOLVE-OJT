@@ -39,7 +39,7 @@ compose:
 
 ---
 
-## 🛠️ Playbook: `nginx_lab5.yml`
+## 🛠️ Playbook: `nginx_lab8.yml`
 
 ```yaml
 ---
@@ -68,7 +68,7 @@ compose:
           <head>
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-              <title>Lab5 by Ahmed Orabi</title>
+              <title>Lab8 by Ahmed Orabi</title>
               <style>
                   @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700&display=swap');
                   body {
@@ -102,7 +102,7 @@ compose:
           </head>
           <body>
               <div class="container">
-                  <h1>Lab5</h1>
+                  <h1>Lab8</h1>
                   <p>by Ahmed Orabi</p>
               </div>
           </body>
@@ -111,15 +111,6 @@ compose:
         group: root
         mode: '0644'
 
-    - name: Open HTTP port using firewalld-cmd
-      command: firewall-cmd --permanent --add-service=http
-      notify: reload firewall
-
-  handlers:
-    - name: reload firewall
-      ansible.builtin.service:
-        name: firewalld
-        state: reloaded
 ```
 
 ---
@@ -127,11 +118,12 @@ compose:
 ## ▶️ How to Run
 
 ```bash
-ansible-playbook nginx_lab5.yml   -i inventory/aws_ec2.yml   --private-key ivolvekey.pem
+ansible-playbook nginx_lab8.yml   -i inventory/aws_ec2.yml   --private-key your_private_key
 ```
 
 ---
+<img width="517" alt="Lab8_2" src="https://github.com/user-attachments/assets/82c2b321-57c7-44a6-b6bd-e50c03940d7d" />
 
-## 👤 Author
+<img width="959" alt="Lab8_3" src="https://github.com/user-attachments/assets/08ab716e-a887-446a-b2e1-88baf0407a6a" />
 
-**Ahmed Orabi**
+
