@@ -11,14 +11,21 @@ This lab demonstrates how to build and run a Java application using Gradle. You 
 
 #### CentOS:
 ```bash
-sudo yum install -y gradle
+wget https://services.gradle.org/distributions/gradle-8.7-bin.zip -P /tmp
+
+sudo unzip -d /opt/gradle /tmp/gradle-8.7-bin.zip
+
+sudo tee /etc/profile.d/gradle.sh > /dev/null <<EOF
+export GRADLE_HOME=/opt/gradle/gradle-8.7
+export PATH=\$PATH:\$GRADLE_HOME/bin
+EOF
+
+sudo chmod +x /etc/profile.d/gradle.sh
+
+source /etc/profile.d/gradle.sh
+
 ```
 
-#### Ubuntu:
-```bash
-sudo apt update
-sudo apt install -y gradle
-```
 
 #### Verify Gradle Installation:
 ```bash
@@ -32,9 +39,6 @@ gradle -v
 ```bash
 # CentOS / RHEL
 sudo yum install java-11-openjdk -y
-
-# Ubuntu / Debian
-sudo apt install openjdk-11-jdk -y
 
 # Verify installation
 java -version
@@ -58,9 +62,11 @@ gradle test
 ```
 
 Expected output should include:
-```
-BUILD SUCCESSFUL
-```
+
+<img width="633" alt="Lab9_1" src="https://github.com/user-attachments/assets/9da1299b-082d-42c8-90dc-453f8086f10a" />
+<img width="633" alt="Lab9_1" src="https://github.com/user-attachments/assets/9da1299b-082d-42c8-90dc-453f8086f10a" />
+
+
 
 ---
 
@@ -74,6 +80,8 @@ This will generate the JAR file at:
 ```
 build/libs/ivolve-app.jar
 ```
+<img width="632" alt="Lab9_2" src="https://github.com/user-attachments/assets/af7fd367-db46-4e2f-b85f-11c02ed43d9e" />
+<img width="632" alt="Lab9_2" src="https://github.com/user-attachments/assets/af7fd367-db46-4e2f-b85f-11c02ed43d9e" />
 
 ---
 
@@ -82,6 +90,8 @@ build/libs/ivolve-app.jar
 ```bash
 java -jar build/libs/ivolve-app.jar
 ```
+<img width="631" alt="Lab9_3" src="https://github.com/user-attachments/assets/f9ae5644-e24c-4145-8a57-fb83be4129d6" />
+<img width="631" alt="Lab9_3" src="https://github.com/user-attachments/assets/f9ae5644-e24c-4145-8a57-fb83be4129d6" />
 
 ---
 
