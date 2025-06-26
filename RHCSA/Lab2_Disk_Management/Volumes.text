@@ -1,0 +1,13 @@
+NAME                    MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda                       8:0    0    20G  0 disk 
+├─sda1                    8:1    0     1G  0 part /boot
+└─sda2                    8:2    0    19G  0 part 
+  ├─cs-root             253:0    0    17G  0 lvm  /
+  └─cs-swap             253:1    0     2G  0 lvm  [SWAP]
+sdb                       8:16   0     7G  0 disk 
+├─sdb1                    8:17   0     2G  0 part 
+│ └─rhcsa_task-rhcsa_lv 253:2    0   4.5G  0 lvm  /mnt/rhcsa
+└─sdb2                    8:18   0     3G  0 part 
+  └─rhcsa_task-rhcsa_lv 253:2    0   4.5G  0 lvm  /mnt/rhcsa
+sr0                      11:0    1 116.8M  0 rom  /run/media/orabi/CDROM
+sr1                      11:1    1   9.7G  0 rom  /run/media/orabi/CentOS-Stream-9-BaseOS-x86_64
