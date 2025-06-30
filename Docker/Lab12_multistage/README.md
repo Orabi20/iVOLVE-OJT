@@ -59,6 +59,7 @@ Open your browser or use `curl`:
 ```bash
 curl http://localhost:8080
 ```
+![image](https://github.com/user-attachments/assets/d6b1989b-9ba3-4e79-81e0-ec35fecfb1f5)
 
 ---
 
