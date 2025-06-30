@@ -9,7 +9,7 @@ This lab demonstrates how to run a Java Spring Boot application inside a Docker 
 
 Build and deploy a Spring Boot app in a Docker container using two approaches:
 - Build the app **before** containerizing
-- Build the app **inside** a Dockerfile (multistage)
+- Build the app **inside** a Dockerfile
 
 ---
 
@@ -23,22 +23,22 @@ cd Docker-1
 
 ---
 
-## 🚀 Approach 1: Multistage Dockerfile (Build Inside Docker)
+## 🚀 Approach 1: Dockerfile (Build Inside Docker)
 
 ### Dockerfile
 ```Dockerfile
-# Stage 1: Build
-FROM maven:3.8.5-openjdk-17 AS builder
-WORKDIR /app
-COPY . .
-RUN mvn clean package
+FROM maven:3.9.10-eclipse-temurin-11-alpine
 
-# Stage 2: Run
-FROM openjdk:17
 WORKDIR /app
-COPY --from=builder /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
+
+COPY Docker-1/ .
+
+RUN mvn package
+
+CMD ["java", "-jar", "target/demo-0.0.1"]
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
 ```
 
 ### Commands
@@ -53,6 +53,8 @@ docker run -d -p 8080:8080 --name springboot-container springboot-app
 ```bash
 curl http://localhost:8080
 ```
+![image](https://github.com/user-attachments/assets/79e67202-e08c-4da7-aeda-1d4387d303ad)
+
 Or open in your browser: `http://localhost:8080`
 
 ---
@@ -86,6 +88,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 docker build -t springboot-app .
 docker run -d -p 8080:8080 --name springboot-container springboot-app
 ```
+![image](https://github.com/user-attachments/assets/89f2a3ff-d0bd-4b52-89dd-e20086cfefd6)
 
 ---
 
