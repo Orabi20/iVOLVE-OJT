@@ -51,7 +51,7 @@ Access the app on:
 
 ### Method ii: Use environment variables from file
 
-Create a file named `.env.staging`:
+Create a file named `.env.file`:
 ```
 APP_MODE=staging
 APP_REGION=us-west
@@ -59,7 +59,7 @@ APP_REGION=us-west
 
 Then run:
 ```bash
-docker run -d -p 8080:8080 --env-file .env.staging docker-lab13
+docker run -d -p 8080:8080 --env-file .env.file docker-lab13
 ```
 ## 🧪 Output
 
