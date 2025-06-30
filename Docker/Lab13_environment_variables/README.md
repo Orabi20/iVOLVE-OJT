@@ -84,12 +84,3 @@ Access the app on:
 
 ![image](https://github.com/user-attachments/assets/d88eb98d-4ab9-451c-83f7-40d06e615ae5)
 
----
-
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
-```
-
----
