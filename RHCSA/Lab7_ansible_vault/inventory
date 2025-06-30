@@ -1,0 +1,2 @@
+[db_servers]
+serverb   ansible_become_password=student
