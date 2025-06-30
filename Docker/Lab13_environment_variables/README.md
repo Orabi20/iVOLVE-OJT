@@ -46,6 +46,7 @@ docker run -d -p 8080:8080 -e APP_MODE=development -e APP_REGION=us-east docker-
 
 Access the app on:  
 📍 `http://localhost:8080`
+
 ![image](https://github.com/user-attachments/assets/11eddb32-8ea0-441b-bab4-7092e7065bcb)
 
 ### Method ii: Use environment variables from file
@@ -64,6 +65,7 @@ docker run -d -p 8080:8080 --env-file .env.staging docker-lab13
 
 Access the app on:  
 📍 `http://localhost:8080`
+
 ![image](https://github.com/user-attachments/assets/fa277af2-4bbf-4c72-b628-fa58609f0304)
 
 ### Method iii: Defined inside Dockerfile
