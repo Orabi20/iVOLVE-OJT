@@ -42,6 +42,11 @@ CMD ["python", "app.py"]
 ```bash
 docker run -d -p 8080:8080 -e APP_MODE=development -e APP_REGION=us-east docker-lab13
 ```
+## 🧪 Output
+
+Access the app on:  
+📍 `http://localhost:8080`
+![image](https://github.com/user-attachments/assets/11eddb32-8ea0-441b-bab4-7092e7065bcb)
 
 ### Method ii: Use environment variables from file
 
@@ -55,6 +60,11 @@ Then run:
 ```bash
 docker run -d -p 8080:8080 --env-file .env.staging docker-lab13
 ```
+## 🧪 Output
+
+Access the app on:  
+📍 `http://localhost:8080`
+![image](https://github.com/user-attachments/assets/fa277af2-4bbf-4c72-b628-fa58609f0304)
 
 ### Method iii: Defined inside Dockerfile
 
@@ -65,30 +75,16 @@ docker run -d -p 8080:8080 docker-lab13
 
 ---
 
-## 🧪 Output Example
+## 🧪 Output
 
 Access the app on:  
 📍 `http://localhost:8080`
 
-Expected output:
-```
-App mode: production, Region: canada-west
-```
+![image](https://github.com/user-attachments/assets/d88eb98d-4ab9-451c-83f7-40d06e615ae5)
 
 ---
 
-## 📝 Notes
 
-- Make sure `app.py` reads environment variables and prints them in one line:
-```python
-from flask import Flask
-import os
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return f"App mode: {os.getenv('APP_MODE')}, Region: {os.getenv('APP_REGION')}"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
