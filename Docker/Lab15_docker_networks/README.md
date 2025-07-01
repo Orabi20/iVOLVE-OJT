@@ -18,10 +18,8 @@ FROM python:3.9
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip install -r requirements.txt
 
-# Optional: install ping for testing
-RUN apt-get update && apt-get install -y iputils-ping
+RUN pip install -r requirements.txt
 
 COPY . .
 
@@ -42,9 +40,6 @@ FROM python:3.9
 WORKDIR /app
 
 RUN pip install flask
-
-# Optional: install ping for testing
-RUN apt-get update && apt-get install -y iputils-ping
 
 COPY . .
 
@@ -94,16 +89,14 @@ docker run -d --name frontend2 frontend-img
 docker exec -it frontend1 curl http://backend:5000
 ```
 
+![image](https://github.com/user-attachments/assets/7f4df9c2-c8dd-41d5-a454-dd454b3fdefe)
+
 - **From `frontend2` (should fail):**
 ```bash
 docker exec -it frontend2 curl http://backend:5000
 ```
 
-- **(Optional)** If using `ping`:
-```bash
-docker exec -it frontend1 ping backend
-docker exec -it frontend2 ping backend
-```
+![image](https://github.com/user-attachments/assets/6f9060ce-eeda-44e6-a40b-c08a6e82f7e3)
 
 ---
 
