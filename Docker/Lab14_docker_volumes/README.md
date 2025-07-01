@@ -17,16 +17,11 @@ docker volume create nginx_logs
 ### 2. Create Local Directory and `index.html`
 ```bash
 mkdir -p ~/nginx-bind/html
-echo "Hello from Bind Mount" > ~/nginx-bind/html/index.html
+cd /nginx-bind/html/
+vim index.html  #set your html page code
 ```
 
-### 3. Set Correct Permissions
-```bash
-chmod -R 755 ~/nginx-bind
-chmod 644 ~/nginx-bind/html/index.html
-```
-
-### 4. Run Nginx Container
+### 3. Run Nginx Container
 > Replace `/home/yourusername` with your actual path (no `~`)
 ```bash
 docker run -d \
@@ -40,28 +35,20 @@ docker run -d \
 ### 5. Test Access from Browser or curl
 ```bash
 curl http://localhost:8080
-# Output: Hello from Bind Mount
 ```
+![image](https://github.com/user-attachments/assets/b394d4e0-d536-428d-9a65-b88bf821aa98)
 
 ### 6. Modify `index.html` and Retest
 ```bash
 echo "Updated Page" > ~/nginx-bind/html/index.html
 curl http://localhost:8080
-# Output: Updated Page
 ```
+![image](https://github.com/user-attachments/assets/fb3d70bc-2bc4-476d-85eb-9065ef675795)
 
 ### 7. Access Logs from Volume (via container)
 ```bash
 docker exec -it nginx-lab14 sh
 cd /var/log/nginx
-cat access.log
-```
-
-### 8. Inspect Volume via Temporary Container
-```bash
-docker run --rm -it -v nginx_logs:/mnt alpine sh
-cd /mnt
-ls -l
 cat access.log
 ```
 
