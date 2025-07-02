@@ -1,0 +1,4 @@
+Host ivolve
+    HostName 192.168.1.10
+    User user
+    IdentityFile ~/.ssh/id_rsa

@@ -1,0 +1,23 @@
+---
+- name: Pull Jenkins image
+  shell: docker pull jenkins/jenkins:lts
+  
+- name: Run Jenkins container
+  shell: |
+    docker run -d \
+      --name jenkins \
+      -p 8080:8080 -p 50000:50000 \
+      -v jenkins_home:/var/jenkins_home \
+      jenkins/jenkins:lts
+  args:
+    creates: /var/lib/docker/volumes/jenkins_home
+
+- name: Get Jenkins initial admin password
+  shell: docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+  register: jenkins_admin_password
+  
+
+- name: Show Jenkins admin password
+  debug:
+    msg: "Jenkins Initial Admin Password: {{ jenkins_admin_password.stdout }}"
+
