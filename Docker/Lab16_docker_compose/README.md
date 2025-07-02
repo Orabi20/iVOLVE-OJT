@@ -127,6 +127,8 @@ Stop and remove containers, network, and volume:
 docker compose down -v
 ```
 
+<img width="664" alt="lab16 1" src="https://github.com/user-attachments/assets/57f050c9-e2a8-4c3b-81a3-a841cbf3d21f" />
+
 ---
 
 ## 📝 Notes
@@ -137,7 +139,3 @@ docker compose down -v
 
 ---
 
-## 👤 Author
-
-**Ahmed Orabi**  
-Lab 16 - Docker Labs
