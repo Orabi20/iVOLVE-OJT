@@ -12,6 +12,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /mnt/app-logs
+  storageClassName: manual   
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -23,6 +24,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  storageClassName: manual 
   selector:
     matchLabels:
-      type: app-logs-storage  
+      type: app-logs-storage   
