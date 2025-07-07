@@ -39,6 +39,13 @@ spec:
 kubectl apply -f lab20-namespace-quota.yaml
 ```
 
+<img width="952" alt="20 1" src="https://github.com/user-attachments/assets/6b1baf4f-d903-440c-860b-fc6cf9328fc0" />
+
+
+<img width="958" alt="20 2" src="https://github.com/user-attachments/assets/9b5ece9f-3ad2-4a54-8c7f-95e248b03d24" />
+
+
+
 ---
 
 ## ✅ Verify
@@ -47,12 +54,17 @@ kubectl apply -f lab20-namespace-quota.yaml
 ```bash
 kubectl get namespaces
 ```
+<img width="947" alt="20 3" src="https://github.com/user-attachments/assets/6d05c04e-8e21-47b4-8338-5dd4239e41c1" />
+
 
 ### Check resource quota in the namespace:
 ```bash
 kubectl get resourcequota -n ivolve
 kubectl describe resourcequota pod-limit -n ivolve
 ```
+
+<img width="958" alt="20 4" src="https://github.com/user-attachments/assets/10e61417-5524-4bc2-a9fb-e006ddf715f8" />
+
 
 ---
 
