@@ -87,8 +87,3 @@ kubectl get pvc
 
 ---
 
-## 📦 (Optional) Pod Mount Example
-
-You can create a pod that mounts this PVC for logging purposes.
-
-Let me know if you'd like a sample pod YAML!
