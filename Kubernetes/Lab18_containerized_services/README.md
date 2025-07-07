@@ -101,53 +101,6 @@ docker push yourdockerhubusername/kubernetes-app
 
 ---
 
-## 🛠️ Troubleshooting
-
-- ❌ `ECONNREFUSED`: MySQL isn't ready yet — retry logic handles this.
-- ❌ `Cannot GET /health`: Add route to `server.js`.
-- ❌ `SIGTERM`: Check `Dockerfile`, `server.js`, and ensure valid JSON in `package.json`.
-
----
-
-## 📁 Sample `Dockerfile`
-
-```dockerfile
-FROM node:18-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
-
-COPY . .
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
-```
-
----
-
-## 📁 Sample `package.json`
-
-```json
-{
-  "name": "ecommerce-ivolve",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "mysql2": "^3.3.1",
-    "morgan": "^1.10.0"
-  }
-}
-```
-
----
 
 ## 🏁 Done!
 
