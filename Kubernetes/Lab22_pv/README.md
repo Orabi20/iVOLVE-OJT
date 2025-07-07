@@ -71,12 +71,19 @@ spec:
 kubectl apply -f lab22-pv-pvc.yaml
 ```
 
+<img width="955" alt="22 1" src="https://github.com/user-attachments/assets/5b45885a-b88c-449c-b6b3-fb81e50c5fef" />
+
 ## 🔍 Verify
 
 ```bash
 kubectl get pv
 kubectl get pvc
 ```
+
+<img width="959" alt="22 2" src="https://github.com/user-attachments/assets/e63655b5-0c9d-451d-b085-72901f1c80ca" />
+
+<img width="954" alt="22 3" src="https://github.com/user-attachments/assets/f490fb9a-b147-4b03-9215-0453a2b4f7f6" />
+
 
 ---
 
