@@ -143,7 +143,6 @@ kubectl apply -f mysql-statefulset.yaml
 kubectl get pods -n ivolve
 kubectl get svc -n ivolve
 kubectl get pvc -n ivolve
-kubectl get endpoints -n ivolve
 ```
 <img width="954" alt="23 3" src="https://github.com/user-attachments/assets/5daf3f8c-bedb-4b5f-98b5-923a3ab4a18d" />
 
