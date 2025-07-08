@@ -40,12 +40,18 @@ kubectl taint nodes <node-name-2> workload=app:NoSchedule
 kubectl taint nodes <node-name-3> workload=database:NoSchedule
 ```
 
+<img width="929" alt="19 2" src="https://github.com/user-attachments/assets/2fe43e72-84c5-4f6a-9bb0-9f653e4a61f8" />
+
+
 ---
 
 ### 3. Verify Taints
 ```bash
 kubectl describe nodes | grep -i taint
 ```
+
+<img width="952" alt="19 3" src="https://github.com/user-attachments/assets/6d18aca1-1a86-40bc-9b0b-49ff0f8ae1a3" />
+
 
 ---
 
@@ -58,26 +64,3 @@ kubectl describe nodes | grep -i taint
 | `NoExecute`        | Evicts existing pods and prevents new ones           |
 
 ---
-
-## ✅ Example Taint Command
-
-```bash
-kubectl taint nodes node1 workload=master:NoSchedule
-```
-
-## ✅ Example Toleration in Pod
-
-```yaml
-tolerations:
-- key: "workload"
-  operator: "Equal"
-  value: "master"
-  effect: "NoSchedule"
-```
-
----
-
-## 📌 Notes
-
-- Replace `<node-name-1>` etc. with actual node names from `kubectl get nodes`.
-- Use `tolerations` in pod YAMLs to allow pods to be scheduled on tainted nodes.
