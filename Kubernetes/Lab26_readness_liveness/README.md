@@ -47,6 +47,8 @@ livenessProbe:
   failureThreshold: 3
   successThreshold: 1
 ```
+<img width="766" alt="image" src="https://github.com/user-attachments/assets/6ff1c582-6146-4618-81d0-92c96224b5ae" />
+
 
 These probes help Kubernetes decide:
 - When to start routing traffic to the pod (readiness).
