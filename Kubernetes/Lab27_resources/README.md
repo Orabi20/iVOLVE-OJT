@@ -9,7 +9,6 @@ This lab demonstrates how to manage Kubernetes pod resources by applying CPU and
 
 - Update the existing Node.js Deployment to include resource requests and limits.
 - Verify resource constraints using `kubectl describe`.
-- Monitor real-time usage using `kubectl top`.
 
 ---
 
@@ -161,12 +160,7 @@ kubectl apply -f nodejs-deployment.yaml
 kubectl describe pod -n ivolve
 ```
 
-Look under `Containers:` for `Limits:` and `Requests:`.
 
-### 3. Monitor Resource Usage
 
-```bash
-kubectl top pod -n ivolve
-```
 
-> If `kubectl top` fails, ensure `metrics-server` is installed and running.
+
