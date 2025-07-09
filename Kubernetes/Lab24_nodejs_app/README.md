@@ -159,10 +159,4 @@ kubectl logs -n ivolve -l app=nodejs
 
 ---
 
-## 🧹 Optional: Clean Up
 
-```bash
-kubectl delete ns ivolve
-```
-
----
