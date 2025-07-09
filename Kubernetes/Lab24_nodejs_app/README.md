@@ -153,7 +153,7 @@ kubectl apply -f service.yaml
 ## 🧪 Step 6: Test via Port Forwarding
 
 ```bash
-kubectl port-forward svc/nodejs-service 8080:3000 -n ivolve
+kubectl port-forward svc/nodejs-service 8080:80 -n ivolve
 ```
 <img width="952" alt="24 4" src="https://github.com/user-attachments/assets/99bdf4f4-d68a-4582-ad90-907301af55be" />
 
