@@ -160,6 +160,7 @@ kubectl apply -f nodejs-deployment.yaml
 kubectl describe pod -n ivolve
 ```
 
+<img width="474" alt="image" src="https://github.com/user-attachments/assets/5c8c05a4-38b5-439f-9bf6-0d2088d422c2" />
 
 
 
