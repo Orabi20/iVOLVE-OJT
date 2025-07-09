@@ -150,25 +150,12 @@ kubectl apply -f service.yaml
 
 ---
 
-## 🧪 Step 6: Test via Port Forwarding
+## 🧪 Step 6: Test via logs
 
 ```bash
-kubectl port-forward svc/nodejs-service 8080:80 -n ivolve
+kubectl logs -n ivolve -l app=nodejs
 ```
-<img width="952" alt="24 4" src="https://github.com/user-attachments/assets/99bdf4f4-d68a-4582-ad90-907301af55be" />
-
-Then open your browser and go to:
-
-```
-http://localhost:8080
-```
-<img width="959" alt="24 1" src="https://github.com/user-attachments/assets/47ac126f-e5fa-41ce-b478-998ea2117d82" />
-
-<img width="269" alt="24 2" src="https://github.com/user-attachments/assets/a9d9727f-faef-4c9a-8211-00a77857742b" />
-
-<img width="266" alt="24 3" src="https://github.com/user-attachments/assets/4b7e2fa0-2890-489d-9407-bfdd6bc85be7" />
-
-
+<img width="929" alt="image" src="https://github.com/user-attachments/assets/9ab7a9e2-8c0e-48cd-89ef-cd485d5b05b4" />
 
 ---
 
@@ -179,13 +166,3 @@ kubectl delete ns ivolve
 ```
 
 ---
-
-## 📝 Notes
-
-- Make sure your Minikube has enough resources to schedule all pods.
-- If you hit pod limit errors, increase your ResourceQuota or delete old pods.
-- Log files will be stored (if enabled in the app) at `/mnt/app` on the Minikube host.
-
----
-
-## ✅ Lab Complete
