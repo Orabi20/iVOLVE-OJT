@@ -20,32 +20,7 @@ Set up an `initContainer` in a Kubernetes deployment to:
 
 ## 📁 Files Needed
 
-### 1. `mysql-secret.yaml`
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mysql-secret
-  namespace: ivolve
-type: Opaque
-data:
-  MYSQL_ROOT_PASSWORD: <base64-root-password>
-  DB_PASSWORD: <base64-db-user-password>
-```
-
-### 2. `mysql-config.yaml`
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mysql-config
-  namespace: ivolve
-data:
-  DB_HOST: mysql
-  DB_USER: ivolve_user
-```
-
-### 3. `deployment.yaml`
+### 1. `deployment.yaml`
 Includes the init container and the main container.
 
 See sample snippet:
@@ -97,9 +72,7 @@ initContainers:
 ## 🚀 Apply the Resources
 
 ```bash
-kubectl apply -f mysql-secret.yaml
-kubectl apply -f mysql-config.yaml
-kubectl apply -f deployment.yaml
+kubectl apply -f init_deployment.yml
 ```
 
 ---
@@ -110,6 +83,7 @@ kubectl apply -f deployment.yaml
 ```bash
 kubectl get pods -n ivolve
 ```
+<img width="944" alt="25 2" src="https://github.com/user-attachments/assets/a035cc04-e15b-4dfd-9527-90137bca43d6" />
 
 ### 2. View init container logs:
 ```bash
@@ -121,18 +95,27 @@ Should show:
 Creating database and user...
 Init container completed.
 ```
+<img width="950" alt="25 1" src="https://github.com/user-attachments/assets/98e4938e-8022-484c-9a8b-330543b0856e" />
 
-### 3. Connect to MySQL to verify:
+## 🧪 Test via Port Forwarding
+
 ```bash
-kubectl port-forward svc/mysql 3306:3306 -n ivolve
-mysql -h 127.0.0.1 -P 3306 -u ivolve_user -p
+kubectl port-forward svc/nodejs-service 8080:3000 -n ivolve
 ```
+<img width="952" alt="24 4" src="https://github.com/user-attachments/assets/b84f4d3b-749b-41e3-ae4f-61bddd0acdfe" />
 
-Then run:
-```sql
-SHOW DATABASES;
-USE ivolve;
+Then open your browser and go to:
+
 ```
+http://localhost:8080
+```
+<img width="959" alt="24 1" src="https://github.com/user-attachments/assets/a9606e53-d817-4abb-a278-8a6d58c45bc8" />
+
+<img width="269" alt="24 2" src="https://github.com/user-attachments/assets/941fc06e-3fd9-4ea6-94b9-f1658bf9d7ac" />
+
+<img width="266" alt="24 3" src="https://github.com/user-attachments/assets/6206c9b5-cf8f-4ba6-8e80-439304ae6544" />
+
+
 
 ---
 
