@@ -13,7 +13,7 @@ This lab demonstrates how to deploy a Node.js application on Kubernetes using:
 ## 📁 Prerequisites
 
 - Minikube running
-- Docker image `orabi20/phpmyadmin:v2` pushed to Docker Hub
+- Docker image `orabi20/kubernetes-app:latest` pushed to Docker Hub
 - Kubernetes namespace: `ivolve`
 
 ---
@@ -56,50 +56,11 @@ Apply it:
 kubectl apply -f mysql-configmap-secret.yaml
 ```
 
----
 
-## 💾 Step 3: Create PersistentVolume and PersistentVolumeClaim
-
-```yaml
-# pv-pvc.yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: app-logs-pv
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: /mnt/app
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: app-logs-pvc
-  namespace: ivolve
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-```
-
-Apply it:
-
-```bash
-kubectl apply -f pv-pvc.yaml
-```
-
----
-
-## 🚀 Step 4: Deploy Node.js Application
+## 🚀 Step 3: Deploy Node.js Application
 
 ```yaml
-# deployment.yaml
+# deployment.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -122,7 +83,7 @@ spec:
           effect: "NoSchedule"
       containers:
         - name: nodejs-container
-          image: orabi20/phpmyadmin:v2
+          image: orabi20/kubernetes:latest
           ports:
             - containerPort: 3000
           env:
@@ -155,13 +116,17 @@ Apply it:
 ```bash
 kubectl apply -f deployment.yaml
 ```
+<img width="958" alt="24 7" src="https://github.com/user-attachments/assets/9847cd0f-5742-45db-a9b2-923cfcb5624b" />
+
+<img width="947" alt="24 5" src="https://github.com/user-attachments/assets/bde48f06-8c37-445c-9037-9f86293c6755" />
+
 
 ---
 
 ## 📡 Step 5: Create ClusterIP Service
 
 ```yaml
-# service.yaml
+# service.yml
 apiVersion: v1
 kind: Service
 metadata:
@@ -181,6 +146,7 @@ Apply it:
 ```bash
 kubectl apply -f service.yaml
 ```
+<img width="949" alt="24 6" src="https://github.com/user-attachments/assets/8248863e-33b5-4dc7-b633-e4d7a7bb7bd2" />
 
 ---
 
@@ -189,12 +155,20 @@ kubectl apply -f service.yaml
 ```bash
 kubectl port-forward svc/nodejs-service 8080:3000 -n ivolve
 ```
+<img width="952" alt="24 4" src="https://github.com/user-attachments/assets/99bdf4f4-d68a-4582-ad90-907301af55be" />
 
 Then open your browser and go to:
 
 ```
 http://localhost:8080
 ```
+<img width="959" alt="24 1" src="https://github.com/user-attachments/assets/47ac126f-e5fa-41ce-b478-998ea2117d82" />
+
+<img width="269" alt="24 2" src="https://github.com/user-attachments/assets/a9d9727f-faef-4c9a-8211-00a77857742b" />
+
+<img width="266" alt="24 3" src="https://github.com/user-attachments/assets/4b7e2fa0-2890-489d-9407-bfdd6bc85be7" />
+
+
 
 ---
 
