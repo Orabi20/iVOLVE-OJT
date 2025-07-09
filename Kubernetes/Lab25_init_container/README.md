@@ -100,7 +100,7 @@ Init container completed.
 ## 🧪 Test via Port Forwarding
 
 ```bash
-kubectl port-forward svc/nodejs-service 8080:3000 -n ivolve
+kubectl port-forward svc/nodejs-service 8080:80 -n ivolve
 ```
 <img width="952" alt="24 4" src="https://github.com/user-attachments/assets/b84f4d3b-749b-41e3-ae4f-61bddd0acdfe" />
 
