@@ -14,10 +14,9 @@ This lab demonstrates how to configure **readiness** and **liveness probes** in 
 
 ## 🧱 Application Details
 
-- **App**: Custom phpMyAdmin container (`orabi20/phpmyadmin:v2`)
 - **Namespace**: `ivolve`
 - **App Port**: `3000` (inside the container)
-- **Accessible Path**: `/index.php`
+- **Accessible Path**: `/health`
 
 ---
 
@@ -25,12 +24,12 @@ This lab demonstrates how to configure **readiness** and **liveness probes** in 
 
 ### ✅ Readiness and Liveness Probes
 
-Probes are defined to monitor `/index.php` on port `3000`:
+Probes are defined to monitor `/health` on port `3000`:
 
 ```yaml
 readinessProbe:
   httpGet:
-    path: /index.php
+    path: /health
     port: 3000
   initialDelaySeconds: 5
   periodSeconds: 10
@@ -40,7 +39,7 @@ readinessProbe:
 
 livenessProbe:
   httpGet:
-    path: /index.php
+    path: /health
     port: 3000
   initialDelaySeconds: 10
   periodSeconds: 20
@@ -70,7 +69,7 @@ spec:
     app: nodejs
   ports:
     - protocol: TCP
-      port: 80
+      port: 3000
       targetPort: 3000
   type: ClusterIP
 ```
@@ -82,25 +81,13 @@ spec:
 To access the app from your browser on port `8080`:
 
 ```bash
-kubectl port-forward svc/nodejs-service 8080:80 -n ivolve
+kubectl port-forward svc/nodejs-service 8080:3000 -n ivolve
 ```
 
 Then open:
 
 ```
-http://localhost:8080/index.php
-```
-
----
-
-## 🔍 Troubleshooting Tips
-
-- If `curl http://localhost:8080/` returns an **empty reply**, try `curl http://localhost:8080/index.php`.
-- Ensure your pod is `Ready` and not restarting:
-
-```bash
-kubectl get pods -n ivolve
-kubectl describe pod <pod-name> -n ivolve
+http://localhost:8080/
 ```
 
 ---
@@ -109,6 +96,6 @@ kubectl describe pod <pod-name> -n ivolve
 
 - Pod status is `Running` and `Ready`.
 - Probes do not fail or trigger restarts.
-- App loads successfully at `http://localhost:8080/index.php`.
+- App loads successfully at `http://localhost:8080/`.
 
 ---
