@@ -29,7 +29,7 @@ Probes are defined to monitor `/health` on port `3000`:
 ```yaml
 readinessProbe:
   httpGet:
-    path: /health
+    path: /ready
     port: 3000
   initialDelaySeconds: 5
   periodSeconds: 10
