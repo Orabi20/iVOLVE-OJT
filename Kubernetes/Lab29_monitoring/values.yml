@@ -1,0 +1,52 @@
+alertmanager:
+  tolerations:
+    - key: "workload"
+      operator: "Exists"
+
+kubeStateMetrics:
+  enabled: true
+  tolerations:
+    - key: "workload"
+      operator: "Exists"
+
+nodeExporter:
+  enabled: true
+  tolerations:
+    - key: "workload"
+      operator: "Exists"
+
+pushgateway:
+  enabled: true
+  tolerations:
+    - key: "workload"
+      operator: "Exists"
+
+server:
+  tolerations:
+    - key: "workload"
+      operator: "Exists"
+
+  persistentVolume:
+    enabled: false
+
+  extraVolumes:
+    - name: data-volume
+      emptyDir: {}
+
+  extraVolumeMounts:
+    - name: data-volume
+      mountPath: /prometheus
+
+  args:
+    - "--storage.tsdb.retention.time=15d"
+    - "--config.file=/etc/config/prometheus.yml"
+    - "--storage.tsdb.path=/prometheus"
+    - "--web.console.libraries=/etc/prometheus/console_libraries"
+    - "--web.console.templates=/etc/prometheus/consoles"
+    - "--web.enable-lifecycle"
+
+  securityContext:
+    runAsUser: 65534
+    runAsGroup: 65534
+    fsGroup: 65534
+

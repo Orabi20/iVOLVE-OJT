@@ -1,0 +1,12 @@
+tolerations:
+  - key: "workload"
+    operator: "Exists"
+
+adminPassword: admin
+
+service:
+  type: ClusterIP
+
+persistence:
+  enabled: false
+
