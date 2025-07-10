@@ -1,5 +1,4 @@
-<img width="950" height="159" alt="29 5" src="https://github.com/user-attachments/assets/73c311f7-cfe6-4b5b-896a-bddaf0544b9c" /><img width="948" height="229" alt="29 6" src="https://github.com/user-attachments/assets/7f39eaf0-ed53-427b-a6e1-7f439447908e" /><img width="948" height="229" alt="29 6" src="https://github.com/user-attachments/assets/f12f6024-b619-4501-a288-bd7c6deb87a1" />
-# Kubernetes Monitoring with Prometheus and Grafana
+# Lab29: Kubernetes Monitoring with Prometheus and Grafana
 
 This guide walks through installing **Prometheus** and **Grafana** in a Kubernetes cluster using Helm, handling node taints with tolerations, and visualizing metrics.
 
