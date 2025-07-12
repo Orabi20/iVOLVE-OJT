@@ -11,6 +11,7 @@ Create a ServiceAccount `jenkins-sa` in the `ivolve` namespace and limit its per
 kubectl create namespace ivolve
 kubectl create serviceaccount jenkins-sa -n ivolve
 ```
+<img width="950" height="42" alt="31 1" src="https://github.com/user-attachments/assets/cfcd19be-8b72-4c88-b80e-9e2eec0238f9" />
 
 ---
 
@@ -35,6 +36,7 @@ Apply it:
 ```bash
 kubectl apply -f pod-reader-role.yaml
 ```
+<img width="943" height="43" alt="31 3" src="https://github.com/user-attachments/assets/147c8907-f598-48e5-bdf2-1f1ad9de7aec" />
 
 ---
 
@@ -63,6 +65,7 @@ Apply it:
 ```bash
 kubectl apply -f pod-reader-rolebinding.yaml
 ```
+<img width="954" height="43" alt="31 4" src="https://github.com/user-attachments/assets/79e57215-3730-4f48-a976-653a0520e2f8" />
 
 ---
 
@@ -118,18 +121,13 @@ KUBECONFIG=kubeconfig-jenkins-sa kubectl get pods -n ivolve
 
 You should see a list of pods (if any), but other operations like `create`, `delete`, or accessing other resource types will be denied.
 
+<img width="956" height="106" alt="31 5" src="https://github.com/user-attachments/assets/7d11bd6e-6db1-43bc-bed0-cff90de64048" />
+
+
+<img width="945" height="62" alt="31 6" src="https://github.com/user-attachments/assets/f2b8a332-852c-4c5c-ab6a-64740afb6b49" />
+
 ---
 
-## 7. Verify Access
-
-```bash
-KUBECONFIG=kubeconfig-jenkins-sa kubectl auth can-i create pods -n ivolve
-```
-
-Expected Output:
-```
-no
-```
 
 ---
 
