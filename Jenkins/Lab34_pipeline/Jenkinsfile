@@ -43,7 +43,6 @@ pipeline {
                 script {
                     sh """
                         echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-                        docker push ${DOCKER_IMAGE}
                         docker push orabi20/jenkins-app-lab34:latest
                         docker logout
                     """
