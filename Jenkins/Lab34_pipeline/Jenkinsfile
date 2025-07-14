@@ -26,7 +26,16 @@ pipeline {
                 }
             }
         }
-
+        
+        stage('check Kubernetes access') {
+            steps {
+                dir('Jenkins/Lab34_pipeline') {
+                    sh """
+                        
+                        kubectl --token=${K8S_TOKEN} --server=${K8S_API_SERVER} \
+                            get po -n ivolve
+                    """
+                }
         stage('Build Docker Image') {
             steps {
                 dir('Jenkins/Lab34_pipeline') {
