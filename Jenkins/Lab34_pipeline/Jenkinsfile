@@ -13,8 +13,9 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'mvn test'
-            }
+                dir('Jenkins/Lab34_pipeline') {
+                    sh 'mvn test'}
+                }
         }
 
         stage('Build Application') {
