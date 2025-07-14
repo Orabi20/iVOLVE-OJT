@@ -26,5 +26,42 @@ pipeline {
                 }
             }
         }
+
+        stage('Build Docker Image') {
+            steps {
+                dir('Jenkins/Lab34_pipeline') {
+                    sh "docker build -t ${DOCKER_IMAGE} ."
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    sh """
+                        echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+                        docker push ${DOCKER_IMAGE}
+                        docker logout
+                    """
+                }
+            }
+        }
+
+        // Optional: Deploy to Kubernetes
+        // stage('Deploy to Kubernetes') {
+        //     steps {
+        //         dir('Jenkins/Lab34_pipeline') {
+        //             sh """
+        //             sed 's|image: .*|image: ${DOCKER_IMAGE}|' k8s/deployment.yaml > deployment-updated.yaml
+        //             curl --insecure \\
+        //                  --header "Authorization: Bearer ${K8S_TOKEN}" \\
+        //                  --header "Content-Type: application/yaml" \\
+        //                  --request POST \\
+        //                  --data-binary @deployment-updated.yaml \\
+        //                  ${K8S_API_SERVER}/apis/apps/v1/namespaces/ivolve/deployments
+        //             """
+        //         }
+        //     }
+        // }
     }
 }
