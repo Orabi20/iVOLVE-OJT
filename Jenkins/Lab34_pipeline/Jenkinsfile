@@ -29,27 +29,27 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                dir('Jenkins/Lab34_pipeline') {
-                    sh """
-                        docker build -t ${DOCKER_IMAGE} .
-                        docker tag ${DOCKER_IMAGE} ${DOCKER_USERNAME}/jenkins-app-lab34:latest
-                    """
-                }
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         dir('Jenkins/Lab34_pipeline') {
+        //             sh """
+        //                 docker build -t ${DOCKER_IMAGE} .
+        //                 docker tag ${DOCKER_IMAGE} ${DOCKER_USERNAME}/jenkins-app-lab34:latest
+        //             """
+        //         }
+        //     }
+        // }
 
-        stage('Push to Docker Hub') {
-            steps {
-                sh """
-                    echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-                    docker push ${DOCKER_IMAGE}
-                    docker push ${DOCKER_USERNAME}/jenkins-app-lab34:latest
-                    docker logout
-                """
-            }
-        }
+        // stage('Push to Docker Hub') {
+        //     steps {
+        //         sh """
+        //             echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+        //             docker push ${DOCKER_IMAGE}
+        //             docker push ${DOCKER_USERNAME}/jenkins-app-lab34:latest
+        //             docker logout
+        //         """
+        //     }
+        // }
 
         stage('Update deployment.yaml') {
             steps {
