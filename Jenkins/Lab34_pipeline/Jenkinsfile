@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_USERNAME = credentials('Docker-User')
         DOCKER_PASSWORD = credentials('Docker-Password')
-        DOCKER_IMAGE = ""credentials('Docker-User')"/jenkins-app-lab34:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "${DOCKER_USERNAME}/jenkins-app-lab34:${BUILD_NUMBER}"
         K8S_API_SERVER = credentials('api-server')
         K8S_TOKEN = credentials('token')
     }
@@ -22,4 +22,5 @@ pipeline {
                 sh 'mvn clean package -DskipTests'
             }
         }
-        }
+    }
+}
