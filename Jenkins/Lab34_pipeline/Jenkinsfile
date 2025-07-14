@@ -15,7 +15,7 @@ pipeline {
 
         stage('Run Unit Test') {
             steps {
-                dir('Jenkins_App') {
+                dir('Jenkins/Lab34_pipeline') {
                     sh 'mvn test'
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
 
         stage('Build App') {
             steps {
-                dir('Jenkins_App') {
+                dir('Jenkins/Lab34_pipeline') {
                     sh 'mvn clean package -DskipTests'
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dir('Jenkins_App') {
+                dir('Jenkins/Lab34_pipeline') {
                     sh """
                         docker build -t ${DOCKER_IMAGE} .
                         docker tag ${DOCKER_IMAGE} ${DOCKER_USERNAME}/jenkins-app-lab34:latest
@@ -53,7 +53,7 @@ pipeline {
 
         stage('Update deployment.yaml') {
             steps {
-                dir('Jenkins_App/k8s') {
+                dir('Jenkins/Lab34_pipeline/k8s') {
                     sh """
                         sed -i 's|image:.*|image: ${DOCKER_IMAGE}|' ${DEPLOYMENT_FILE}
                         cat ${DEPLOYMENT_FILE}
