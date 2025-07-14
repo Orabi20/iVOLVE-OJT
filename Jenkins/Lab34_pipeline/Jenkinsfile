@@ -14,13 +14,16 @@ pipeline {
         stage('Run Tests') {
             steps {
                 dir('Jenkins/Lab34_pipeline') {
-                    sh 'mvn test'}
+                    sh 'mvn test'
                 }
+            }
         }
 
         stage('Build Application') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                dir('Jenkins/Lab34_pipeline') {
+                    sh 'mvn clean package -DskipTests'
+                }
             }
         }
     }
