@@ -68,7 +68,7 @@ pipeline {
                     string(credentialsId: 'token', variable: 'K8S_TOKEN'),
                     string(credentialsId: 'api-server', variable: 'K8S_API_SERVER')
                 ]) {
-                    dir('Jenkins_App/k8s') {
+                    dir('Jenkins/Lab34_pipeline/k8s') {
                         sh '''
                             kubectl --server=$K8S_API_SERVER \
                                     --token=$K8S_TOKEN \
