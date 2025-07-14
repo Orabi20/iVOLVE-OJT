@@ -1,9 +1,5 @@
 # Lab 34: Jenkins Pipeline for Application Deployment
 
-## 🔗 GitHub Repository
-Cloned from: https://github.com/Ibrahim-Adel15/Jenkins_App.git  
-Modified and used: https://github.com/Orabi20/iVOLVE-OJT
-
 ## 🚀 CI/CD Pipeline Overview
 
 The Jenkins pipeline automates the following steps:
@@ -122,3 +118,12 @@ pipeline {
         }
     }
 }
+```
+
+<img width="744" height="400" alt="image" src="https://github.com/user-attachments/assets/33a98cf3-ee51-4782-8463-7174425f7dae" />
+
+
+
+<img width="956" height="436" alt="34 2" src="https://github.com/user-attachments/assets/14117292-4628-4494-8f41-1dde629b0bd5" />
+
+
