@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_USERNAME = credentials('Docker-User')
         DOCKER_PASSWORD = credentials('Docker-Password')
-        DOCKER_IMAGE = "orabi20/jenkins-app-lab34:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "${DOCKER_USERNAME}/jenkins-app-lab34:${BUILD_NUMBER}"
         K8S_API_SERVER = credentials('api-server')
         K8S_TOKEN = credentials('token')
     }
@@ -26,22 +26,22 @@ pipeline {
                 }
             }
         }
-        
-        stage('check Kubernetes access') {
+
+        stage('Check Kubernetes Access') {
             steps {
-                dir('Jenkins/Lab34_pipeline') {
-                    sh """
-                        
-                        kubectl --token=${K8S_TOKEN} --server=${K8S_API_SERVER} \
-                            get po -n ivolve
-                    """
-                }
+                sh """
+                    kubectl --token=${K8S_TOKEN} --server=${K8S_API_SERVER} \
+                        get po -n ivolve
+                """
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 dir('Jenkins/Lab34_pipeline') {
                     sh """
                         docker build -t ${DOCKER_IMAGE} .
-                        docker tag ${DOCKER_IMAGE} orabi20/jenkins-app-lab34:latest
+                        docker tag ${DOCKER_IMAGE} ${DOCKER_USERNAME}/jenkins-app-lab34:latest
                     """
                 }
             }
@@ -52,7 +52,8 @@ pipeline {
                 script {
                     sh """
                         echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-                        docker push orabi20/jenkins-app-lab34:latest
+                        docker push ${DOCKER_IMAGE}
+                        docker push ${DOCKER_USERNAME}/jenkins-app-lab34:latest
                         docker logout
                     """
                 }
