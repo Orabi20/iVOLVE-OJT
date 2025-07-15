@@ -31,7 +31,7 @@ jenkins_shared_library/
 | `runUnitTests()`   | Runs unit tests using Maven                   |
 | `buildApp()`       | Builds the Java application using Maven       |
 | `buildImage(img)`  | Builds a Docker image from the app source     |
-| `scanImage(img)`   | (Optional) Simulates scanning the Docker image|
+| `scanImage(img)`   | Scanning the Docker image|
 | `pushImage(img, user, pass)` | Pushes image to Docker Hub         |
 | `removeImage(img)` | Removes image locally to save space           |
 | `deployOnK8s(api, token, ns, img, file)` | Deploys to Kubernetes  |
