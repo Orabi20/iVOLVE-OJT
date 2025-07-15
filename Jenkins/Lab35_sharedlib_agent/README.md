@@ -12,14 +12,14 @@ It supports a multi-stage Jenkins pipeline that performs testing, building, Dock
 ```
 jenkins_shared_library/
 ├── vars/
-│   ├── runUnitTests.groovy
-│   ├── buildApp.groovy
-│   ├── buildImage.groovy
-│   ├── scanImage.groovy
-│   ├── pushImage.groovy
-│   ├── removeImage.groovy
-│   └── deployOnK8s.groovy
-└── README.md
+   ├── runUnitTests.groovy
+   ├── buildApp.groovy
+   ├── buildImage.groovy
+   ├── scanImage.groovy
+   ├── pushImage.groovy
+   ├── removeImage.groovy
+   └── deployOnK8s.groovy
+
 ```
 
 ---
