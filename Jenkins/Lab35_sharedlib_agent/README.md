@@ -1,5 +1,5 @@
 
-# Jenkins Shared Library – Lab 35
+# Lab35: Jenkins Shared Library
 
 This shared library is used in **Lab 35: CI/CD Pipeline Implementation with Jenkins Agents and Shared Libraries**.
 
@@ -96,6 +96,16 @@ pipeline {
 }
 ```
 
+<img width="959" height="437" alt="35 2" src="https://github.com/user-attachments/assets/e023a6c9-8214-456f-806f-c5fe1c29ec7f" />
+
+
+
+<img width="959" height="412" alt="35 5" src="https://github.com/user-attachments/assets/7669cb7b-7cda-499c-8818-d1d7596cbd5a" />
+
+
+<img width="950" height="141" alt="35 3" src="https://github.com/user-attachments/assets/e5c9023c-f347-4c51-92bb-5faa74ef75dc" />
+
+
 ---
 
 ## 🔐 Credentials Required
@@ -112,6 +122,9 @@ Ensure these Jenkins credentials are created:
 
 Pipeline uses a configured Jenkins agent labeled: `agent-vm-1`
 
+<img width="959" height="453" alt="35 1" src="https://github.com/user-attachments/assets/0f1a618c-1918-4864-b5b7-fd7a086c1550" />
+
+
 ---
 
 ## ✅ Status
@@ -119,7 +132,3 @@ Pipeline uses a configured Jenkins agent labeled: `agent-vm-1`
 ✔️ Verified working with Jenkins + Docker + Kubernetes
 
 ---
-
-## 📌 Author
-
-- [@Orabi20](https://github.com/Orabi20)
