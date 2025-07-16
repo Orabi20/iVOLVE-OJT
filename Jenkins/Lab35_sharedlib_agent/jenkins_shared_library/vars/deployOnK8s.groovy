@@ -15,4 +15,3 @@ def call(String apiServer, String token, String namespace, String imageName, Str
         """
     }
 }
-
