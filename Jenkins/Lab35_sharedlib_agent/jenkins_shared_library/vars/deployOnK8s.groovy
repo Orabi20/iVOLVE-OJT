@@ -16,10 +16,10 @@ def call(String apiServer, String token, String namespace, String imageName, Str
 }
 
 def runDeployCommands(fileName, imageName, apiServer, token, namespace) {
-    // sh """
-    //     sed -i 's|image:.*|image: ${imageName}|' ${fileName}
-    //     cat ${fileName}
-    // """
+    sh """
+        sed -i 's|image:.*|image: ${imageName}|' ${fileName}
+        cat ${fileName}
+    """
     sh """
         kubectl --server=${apiServer} \
                 --token=${token} \
