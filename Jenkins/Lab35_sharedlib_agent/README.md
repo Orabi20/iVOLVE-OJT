@@ -53,7 +53,7 @@ pipeline {
         K8S_API_SERVER = credentials('api-server')
         K8S_TOKEN = credentials('token')
         NAMESPACE = 'ivolve'
-        DEPLOYMENT_FILE = 'Jenkins/Lab34_pipeline/k8s/deployment.yaml'
+        DEPLOYMENT_FILE = 'Jenkins/Lab35_sharedlib_agent/k8s/deployment.yaml'
     }
 
     stages {
