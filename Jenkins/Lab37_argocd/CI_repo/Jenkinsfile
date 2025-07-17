@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_USERNAME = credentials('Docker-User')
         DOCKER_PASSWORD = credentials('Docker-Password')
-        DOCKER_IMAGE = "${DOCKER_USERNAME}/jenkins-app-lab37:14"
+        DOCKER_IMAGE = "${DOCKER_USERNAME}/jenkins-app-lab37:${BUILD_NUMBER}"
         K8S_TOKEN = credentials('token')
         NAMESPACE = 'ivolve'
         DEPLOYMENT_FILE = 'Jenkins/Lab37_argocd/CD_repo/deployment.yaml'
@@ -24,7 +24,7 @@ pipeline {
             steps {
               dir('Jenkins/Lab37_argocd/CI_repo'){
                 echo 'Building Docker image...'
-                // sh 'docker build -t $DOCKER_IMAGE .'
+                sh 'docker build -t $DOCKER_IMAGE .
             }
           }      
         }
@@ -33,10 +33,10 @@ pipeline {
             steps {
               dir('Jenkins/Lab37_argocd/CI_repo'){
                 echo 'Pushing Docker image to Docker Hub...'
-                // sh '''
-                //     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-                //     docker push $DOCKER_IMAGE
-                // '''
+                sh '''
+                    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                    docker push $DOCKER_IMAGE
+                '''
                }
             }      
         }
