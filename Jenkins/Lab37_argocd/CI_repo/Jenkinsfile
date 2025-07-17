@@ -39,7 +39,7 @@ pipeline {
 
         stage('Clone ArgoCD Manifests Repo') {
             steps {
-                 dir('Jenkins/Lab37_argocd/CD_repo') {
+                 dir('Jenkins/Lab37_argocd/CI_repo') {
                     git branch: 'master',
                         credentialsId: GIT_CREDENTIALS_ID,
                         url: 'https://github.com/Orabi20/iVOLVE-OJT'
@@ -49,7 +49,7 @@ pipeline {
 
         stage('Update Deployment File with New Image') {
             steps {
-                dir('Jenkins/Lab37_argocd/CD_repo') {
+                dir('Jenkins/Lab37_argocd/CI_repo/Jenkins/Lab37_argocd/CD_repo') {
                     withCredentials([usernamePassword(credentialsId: GIT_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
                             git config user.name "jenkins"
