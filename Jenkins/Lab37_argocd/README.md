@@ -149,17 +149,18 @@ pipeline {
     }
 }
 ```
+
+# Before Applying Change:
+
 <img width="959" height="469" alt="37 1" src="https://github.com/user-attachments/assets/720c1fc6-e1b0-48b9-85ca-22252fc95269" />
 
 <img width="959" height="473" alt="37 2" src="https://github.com/user-attachments/assets/12c6e973-97d1-4ca3-a048-6919f87b0ecf" />
 
+# After Applying Change:
 
 <img width="928" height="132" alt="37 4" src="https://github.com/user-attachments/assets/4da579a5-07d8-43ad-b6bb-c123f652490c" />
 
-
-
 <img width="435" height="354" alt="37 5" src="https://github.com/user-attachments/assets/25e149d4-b109-410b-8a28-6eb6c38a0fcc" />
-
 
 <img width="956" height="380" alt="37 6" src="https://github.com/user-attachments/assets/04f74284-2043-4ab5-811d-625e6252705d" />
 
