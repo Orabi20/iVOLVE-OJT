@@ -14,7 +14,7 @@ spec:
         app: jenkins-app-lab37
     spec:
       containers:
-        - name: jenkins-app-lab35
+        - name: jenkins-app-lab37
           image: orabi20/jenkins-app-lab37:14
           ports:
             - containerPort: 8080
