@@ -14,8 +14,9 @@ pipeline {
     stages {
         stage('Build Application') {
             steps {
+              dir('Jenkins/Lab37_argocd/CI_repo'){  
                 echo 'Building application...'
-                sh 'mvn clean package'
+                sh 'mvn clean package'}
             }
         }
 
