@@ -1,0 +1,82 @@
+pipeline {
+    agent { label 'agent-vm-1' }
+
+    environment {
+        DOCKER_USERNAME = credentials('Docker-User')
+        DOCKER_PASSWORD = credentials('Docker-Password')
+        DOCKER_IMAGE = "${DOCKER_USERNAME}/jenkins-app-lab35:${BUILD_NUMBER}"
+        K8S_API_SERVER = credentials('api-server')
+        K8S_TOKEN = credentials('token')
+        NAMESPACE = 'ivolve'
+        DEPLOYMENT_FILE = 'Jenkins/Lab35_sharedlib_agent/deployment.yaml'
+        GIT_CREDENTIALS_ID = 'github'
+    }
+
+    stages {
+        stage('Build Application') {
+            steps {
+                echo 'Building application...'
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                sh 'docker build -t $DOCKER_IMAGE .'
+            }
+        }
+
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                echo 'Pushing Docker image to Docker Hub...'
+                sh '''
+                    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                    docker push $DOCKER_IMAGE
+                '''
+            }
+        }
+
+        stage('Clone ArgoCD Manifests Repo') {
+            steps {
+                dir('argocd-yaml') {
+                    git branch: 'main',
+                        credentialsId: GIT_CREDENTIALS_ID,
+                        url: 'https://github.com//argocd-yaml.git'
+                }
+            }
+        }
+
+        stage('Update Deployment File with New Image') {
+            steps {
+                dir('argocd-yaml') {
+                    withCredentials([usernamePassword(credentialsId: GIT_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                        sh '''
+                            git config user.name "jenkins"
+                            git config user.email "jenkins@example.com"
+
+                            sed -i 's|image:.*|image: '"$DOCKER_IMAGE"'|' $DEPLOYMENT_FILE
+                            git add $DEPLOYMENT_FILE
+                            git commit -m "Update image to $DOCKER_IMAGE" || echo "No changes to commit"
+                            git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/Ibrahim-Adel15/argocd-yaml.git
+                        '''
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up workspace...'
+            sh 'rm -rf argocd-yaml || true'
+        }
+        success {
+            echo 'Pipeline completed successfully.'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
+
