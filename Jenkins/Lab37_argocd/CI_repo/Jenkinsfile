@@ -29,12 +29,14 @@ pipeline {
 
         stage('Push Docker Image to Docker Hub') {
             steps {
+              dir('Jenkins/Lab37_argocd/CI_repo'){
                 echo 'Pushing Docker image to Docker Hub...'
                 sh '''
                     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
                     docker push $DOCKER_IMAGE
                 '''
-            }
+               }
+            }      
         }
 
         stage('Clone ArgoCD Manifests Repo') {
