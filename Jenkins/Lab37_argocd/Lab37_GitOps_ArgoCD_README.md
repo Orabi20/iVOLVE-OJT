@@ -15,15 +15,6 @@ Automate application deployment using Jenkins, Docker, GitHub, and ArgoCD within
 
 ---
 
-## 🔗 Clone Docker File Repository
-
-```bash
-git clone https://github.com/Ibrahim-Adel15/Jenkins_App.git
-cd Jenkins_App
-```
-
----
-
 ## ⚙️ CI/CD Pipeline Steps
 
 The Jenkins pipeline automates the following tasks:
@@ -46,12 +37,6 @@ docker build -t <dockerhub-username>/jenkins-app:<tag> .
 ```bash
 docker login
 docker push <dockerhub-username>/jenkins-app:<tag>
-```
-
-### 4️⃣ Delete Local Image (Optional Cleanup)
-
-```bash
-docker rmi <dockerhub-username>/jenkins-app:<tag>
 ```
 
 ### 5️⃣ Update Deployment Manifest
