@@ -41,7 +41,7 @@ pipeline {
                  dir('Jenkins/Lab37_argocd/CD_repo') {
                     git branch: 'master',
                         credentialsId: GIT_CREDENTIALS_ID,
-                        url: 'https://github.com//argocd-yaml.git'
+                        url: 'https://github.com/Orabi20/iVOLVE-OJT'
                  }
             }
         }
