@@ -70,7 +70,6 @@ pipeline {
         DOCKER_USERNAME = credentials('Docker-User')
         DOCKER_PASSWORD = credentials('Docker-Password')
         DOCKER_IMAGE = "${DOCKER_USERNAME}/jenkins-app-lab37:${BUILD_NUMBER}"
-        K8S_TOKEN = credentials('token')
         NAMESPACE = 'ivolve'
         DEPLOYMENT_FILE = 'Jenkins/Lab37_argocd/CD_repo/deployment.yaml'
         GIT_CREDENTIALS_ID = 'github'
