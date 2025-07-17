@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jenkins-app-lab35
+  name: jenkins-app-lab37
   namespace: ivolve
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: jenkins-app-lab35
+      app: jenkins-app-lab37
   template:
     metadata:
       labels:
-        app: jenkins-app-lab35
+        app: jenkins-app-lab37
     spec:
       containers:
         - name: jenkins-app-lab35
