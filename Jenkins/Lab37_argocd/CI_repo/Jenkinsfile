@@ -22,9 +22,11 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
+              dir('Jenkins/Lab37_argocd/CI_repo'){
                 echo 'Building Docker image...'
                 sh 'docker build -t $DOCKER_IMAGE .'
             }
+          }      
         }
 
         stage('Push Docker Image to Docker Hub') {
